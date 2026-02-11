@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .bg-dark-grey {
+        background-color: #353636;
+    }
+
+    .bg-gold {
+        background-color: #b68f36;
+    }
+
+    .text-dark-grey {
+        color: #353636;
+    }
+
+    .text-gold {
+        color: #b68f36;
+    }
+}
