@@ -10,132 +10,95 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthLayoutAuthSignUpRouteImport } from './routes/auth/_layout.auth/sign-up'
-import { Route as AuthLayoutAuthSignInRouteImport } from './routes/auth/_layout.auth/sign-in'
-import { Route as AuthLayoutAuthRestPasswordRouteImport } from './routes/auth/_layout.auth/rest-password'
-import { Route as AuthLayoutAuthResendOtpPageRouteImport } from './routes/auth/_layout.auth/resend-otp-page'
-import { Route as AuthLayoutAuthOtpPageRouteImport } from './routes/auth/_layout.auth/otp-page'
-import { Route as AuthLayoutAuthForgetPasswordRouteImport } from './routes/auth/_layout.auth/forget-password'
-import { Route as AuthLayoutAuthCompleteProfileRouteImport } from './routes/auth/_layout.auth/complete-profile'
+import { Route as authLayoutRouteImport } from './routes/(auth)/_layout'
+import { Route as authLayoutAuthSignUpRouteImport } from './routes/(auth)/_layout.auth/sign-up'
+import { Route as authLayoutAuthSignInRouteImport } from './routes/(auth)/_layout.auth/sign-in'
+import { Route as authLayoutAuthResetPasswordRouteImport } from './routes/(auth)/_layout.auth/reset-password'
+import { Route as authLayoutAuthResendOtpPageRouteImport } from './routes/(auth)/_layout.auth/resend-otp-page'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthLayoutAuthSignUpRoute = AuthLayoutAuthSignUpRouteImport.update({
-  id: '/auth/_layout/auth/sign-up',
-  path: '/auth/auth/sign-up',
+const authLayoutRoute = authLayoutRouteImport.update({
+  id: '/(auth)/_layout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthLayoutAuthSignInRoute = AuthLayoutAuthSignInRouteImport.update({
-  id: '/auth/_layout/auth/sign-in',
-  path: '/auth/auth/sign-in',
-  getParentRoute: () => rootRouteImport,
+const authLayoutAuthSignUpRoute = authLayoutAuthSignUpRouteImport.update({
+  id: '/auth/sign-up',
+  path: '/auth/sign-up',
+  getParentRoute: () => authLayoutRoute,
 } as any)
-const AuthLayoutAuthRestPasswordRoute =
-  AuthLayoutAuthRestPasswordRouteImport.update({
-    id: '/auth/_layout/auth/rest-password',
-    path: '/auth/auth/rest-password',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AuthLayoutAuthResendOtpPageRoute =
-  AuthLayoutAuthResendOtpPageRouteImport.update({
-    id: '/auth/_layout/auth/resend-otp-page',
-    path: '/auth/auth/resend-otp-page',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AuthLayoutAuthOtpPageRoute = AuthLayoutAuthOtpPageRouteImport.update({
-  id: '/auth/_layout/auth/otp-page',
-  path: '/auth/auth/otp-page',
-  getParentRoute: () => rootRouteImport,
+const authLayoutAuthSignInRoute = authLayoutAuthSignInRouteImport.update({
+  id: '/auth/sign-in',
+  path: '/auth/sign-in',
+  getParentRoute: () => authLayoutRoute,
 } as any)
-const AuthLayoutAuthForgetPasswordRoute =
-  AuthLayoutAuthForgetPasswordRouteImport.update({
-    id: '/auth/_layout/auth/forget-password',
-    path: '/auth/auth/forget-password',
-    getParentRoute: () => rootRouteImport,
+const authLayoutAuthResetPasswordRoute =
+  authLayoutAuthResetPasswordRouteImport.update({
+    id: '/auth/reset-password',
+    path: '/auth/reset-password',
+    getParentRoute: () => authLayoutRoute,
   } as any)
-const AuthLayoutAuthCompleteProfileRoute =
-  AuthLayoutAuthCompleteProfileRouteImport.update({
-    id: '/auth/_layout/auth/complete-profile',
-    path: '/auth/auth/complete-profile',
-    getParentRoute: () => rootRouteImport,
+const authLayoutAuthResendOtpPageRoute =
+  authLayoutAuthResendOtpPageRouteImport.update({
+    id: '/auth/resend-otp-page',
+    path: '/auth/resend-otp-page',
+    getParentRoute: () => authLayoutRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth/auth/complete-profile': typeof AuthLayoutAuthCompleteProfileRoute
-  '/auth/auth/forget-password': typeof AuthLayoutAuthForgetPasswordRoute
-  '/auth/auth/otp-page': typeof AuthLayoutAuthOtpPageRoute
-  '/auth/auth/resend-otp-page': typeof AuthLayoutAuthResendOtpPageRoute
-  '/auth/auth/rest-password': typeof AuthLayoutAuthRestPasswordRoute
-  '/auth/auth/sign-in': typeof AuthLayoutAuthSignInRoute
-  '/auth/auth/sign-up': typeof AuthLayoutAuthSignUpRoute
+  '/auth/resend-otp-page': typeof authLayoutAuthResendOtpPageRoute
+  '/auth/reset-password': typeof authLayoutAuthResetPasswordRoute
+  '/auth/sign-in': typeof authLayoutAuthSignInRoute
+  '/auth/sign-up': typeof authLayoutAuthSignUpRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth/auth/complete-profile': typeof AuthLayoutAuthCompleteProfileRoute
-  '/auth/auth/forget-password': typeof AuthLayoutAuthForgetPasswordRoute
-  '/auth/auth/otp-page': typeof AuthLayoutAuthOtpPageRoute
-  '/auth/auth/resend-otp-page': typeof AuthLayoutAuthResendOtpPageRoute
-  '/auth/auth/rest-password': typeof AuthLayoutAuthRestPasswordRoute
-  '/auth/auth/sign-in': typeof AuthLayoutAuthSignInRoute
-  '/auth/auth/sign-up': typeof AuthLayoutAuthSignUpRoute
+  '/auth/resend-otp-page': typeof authLayoutAuthResendOtpPageRoute
+  '/auth/reset-password': typeof authLayoutAuthResetPasswordRoute
+  '/auth/sign-in': typeof authLayoutAuthSignInRoute
+  '/auth/sign-up': typeof authLayoutAuthSignUpRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/auth/_layout/auth/complete-profile': typeof AuthLayoutAuthCompleteProfileRoute
-  '/auth/_layout/auth/forget-password': typeof AuthLayoutAuthForgetPasswordRoute
-  '/auth/_layout/auth/otp-page': typeof AuthLayoutAuthOtpPageRoute
-  '/auth/_layout/auth/resend-otp-page': typeof AuthLayoutAuthResendOtpPageRoute
-  '/auth/_layout/auth/rest-password': typeof AuthLayoutAuthRestPasswordRoute
-  '/auth/_layout/auth/sign-in': typeof AuthLayoutAuthSignInRoute
-  '/auth/_layout/auth/sign-up': typeof AuthLayoutAuthSignUpRoute
+  '/(auth)/_layout': typeof authLayoutRouteWithChildren
+  '/(auth)/_layout/auth/resend-otp-page': typeof authLayoutAuthResendOtpPageRoute
+  '/(auth)/_layout/auth/reset-password': typeof authLayoutAuthResetPasswordRoute
+  '/(auth)/_layout/auth/sign-in': typeof authLayoutAuthSignInRoute
+  '/(auth)/_layout/auth/sign-up': typeof authLayoutAuthSignUpRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/auth/auth/complete-profile'
-    | '/auth/auth/forget-password'
-    | '/auth/auth/otp-page'
-    | '/auth/auth/resend-otp-page'
-    | '/auth/auth/rest-password'
-    | '/auth/auth/sign-in'
-    | '/auth/auth/sign-up'
+    | '/auth/resend-otp-page'
+    | '/auth/reset-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/auth/auth/complete-profile'
-    | '/auth/auth/forget-password'
-    | '/auth/auth/otp-page'
-    | '/auth/auth/resend-otp-page'
-    | '/auth/auth/rest-password'
-    | '/auth/auth/sign-in'
-    | '/auth/auth/sign-up'
+    | '/auth/resend-otp-page'
+    | '/auth/reset-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
   id:
     | '__root__'
     | '/'
-    | '/auth/_layout/auth/complete-profile'
-    | '/auth/_layout/auth/forget-password'
-    | '/auth/_layout/auth/otp-page'
-    | '/auth/_layout/auth/resend-otp-page'
-    | '/auth/_layout/auth/rest-password'
-    | '/auth/_layout/auth/sign-in'
-    | '/auth/_layout/auth/sign-up'
+    | '/(auth)/_layout'
+    | '/(auth)/_layout/auth/resend-otp-page'
+    | '/(auth)/_layout/auth/reset-password'
+    | '/(auth)/_layout/auth/sign-in'
+    | '/(auth)/_layout/auth/sign-up'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthLayoutAuthCompleteProfileRoute: typeof AuthLayoutAuthCompleteProfileRoute
-  AuthLayoutAuthForgetPasswordRoute: typeof AuthLayoutAuthForgetPasswordRoute
-  AuthLayoutAuthOtpPageRoute: typeof AuthLayoutAuthOtpPageRoute
-  AuthLayoutAuthResendOtpPageRoute: typeof AuthLayoutAuthResendOtpPageRoute
-  AuthLayoutAuthRestPasswordRoute: typeof AuthLayoutAuthRestPasswordRoute
-  AuthLayoutAuthSignInRoute: typeof AuthLayoutAuthSignInRoute
-  AuthLayoutAuthSignUpRoute: typeof AuthLayoutAuthSignUpRoute
+  authLayoutRoute: typeof authLayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -147,67 +110,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth/_layout/auth/sign-up': {
-      id: '/auth/_layout/auth/sign-up'
-      path: '/auth/auth/sign-up'
-      fullPath: '/auth/auth/sign-up'
-      preLoaderRoute: typeof AuthLayoutAuthSignUpRouteImport
+    '/(auth)/_layout': {
+      id: '/(auth)/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth/_layout/auth/sign-in': {
-      id: '/auth/_layout/auth/sign-in'
-      path: '/auth/auth/sign-in'
-      fullPath: '/auth/auth/sign-in'
-      preLoaderRoute: typeof AuthLayoutAuthSignInRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(auth)/_layout/auth/sign-up': {
+      id: '/(auth)/_layout/auth/sign-up'
+      path: '/auth/sign-up'
+      fullPath: '/auth/sign-up'
+      preLoaderRoute: typeof authLayoutAuthSignUpRouteImport
+      parentRoute: typeof authLayoutRoute
     }
-    '/auth/_layout/auth/rest-password': {
-      id: '/auth/_layout/auth/rest-password'
-      path: '/auth/auth/rest-password'
-      fullPath: '/auth/auth/rest-password'
-      preLoaderRoute: typeof AuthLayoutAuthRestPasswordRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(auth)/_layout/auth/sign-in': {
+      id: '/(auth)/_layout/auth/sign-in'
+      path: '/auth/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof authLayoutAuthSignInRouteImport
+      parentRoute: typeof authLayoutRoute
     }
-    '/auth/_layout/auth/resend-otp-page': {
-      id: '/auth/_layout/auth/resend-otp-page'
-      path: '/auth/auth/resend-otp-page'
-      fullPath: '/auth/auth/resend-otp-page'
-      preLoaderRoute: typeof AuthLayoutAuthResendOtpPageRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(auth)/_layout/auth/reset-password': {
+      id: '/(auth)/_layout/auth/reset-password'
+      path: '/auth/reset-password'
+      fullPath: '/auth/reset-password'
+      preLoaderRoute: typeof authLayoutAuthResetPasswordRouteImport
+      parentRoute: typeof authLayoutRoute
     }
-    '/auth/_layout/auth/otp-page': {
-      id: '/auth/_layout/auth/otp-page'
-      path: '/auth/auth/otp-page'
-      fullPath: '/auth/auth/otp-page'
-      preLoaderRoute: typeof AuthLayoutAuthOtpPageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/_layout/auth/forget-password': {
-      id: '/auth/_layout/auth/forget-password'
-      path: '/auth/auth/forget-password'
-      fullPath: '/auth/auth/forget-password'
-      preLoaderRoute: typeof AuthLayoutAuthForgetPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/_layout/auth/complete-profile': {
-      id: '/auth/_layout/auth/complete-profile'
-      path: '/auth/auth/complete-profile'
-      fullPath: '/auth/auth/complete-profile'
-      preLoaderRoute: typeof AuthLayoutAuthCompleteProfileRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(auth)/_layout/auth/resend-otp-page': {
+      id: '/(auth)/_layout/auth/resend-otp-page'
+      path: '/auth/resend-otp-page'
+      fullPath: '/auth/resend-otp-page'
+      preLoaderRoute: typeof authLayoutAuthResendOtpPageRouteImport
+      parentRoute: typeof authLayoutRoute
     }
   }
 }
 
+interface authLayoutRouteChildren {
+  authLayoutAuthResendOtpPageRoute: typeof authLayoutAuthResendOtpPageRoute
+  authLayoutAuthResetPasswordRoute: typeof authLayoutAuthResetPasswordRoute
+  authLayoutAuthSignInRoute: typeof authLayoutAuthSignInRoute
+  authLayoutAuthSignUpRoute: typeof authLayoutAuthSignUpRoute
+}
+
+const authLayoutRouteChildren: authLayoutRouteChildren = {
+  authLayoutAuthResendOtpPageRoute: authLayoutAuthResendOtpPageRoute,
+  authLayoutAuthResetPasswordRoute: authLayoutAuthResetPasswordRoute,
+  authLayoutAuthSignInRoute: authLayoutAuthSignInRoute,
+  authLayoutAuthSignUpRoute: authLayoutAuthSignUpRoute,
+}
+
+const authLayoutRouteWithChildren = authLayoutRoute._addFileChildren(
+  authLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthLayoutAuthCompleteProfileRoute: AuthLayoutAuthCompleteProfileRoute,
-  AuthLayoutAuthForgetPasswordRoute: AuthLayoutAuthForgetPasswordRoute,
-  AuthLayoutAuthOtpPageRoute: AuthLayoutAuthOtpPageRoute,
-  AuthLayoutAuthResendOtpPageRoute: AuthLayoutAuthResendOtpPageRoute,
-  AuthLayoutAuthRestPasswordRoute: AuthLayoutAuthRestPasswordRoute,
-  AuthLayoutAuthSignInRoute: AuthLayoutAuthSignInRoute,
-  AuthLayoutAuthSignUpRoute: AuthLayoutAuthSignUpRoute,
+  authLayoutRoute: authLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

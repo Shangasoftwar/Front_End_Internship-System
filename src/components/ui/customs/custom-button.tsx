@@ -25,7 +25,7 @@ const buttonVariants = cva(
       variants: {
          theme: {
             primary: '!bg-primary hover:!bg-primary-700',
-            secondary: '!bg-button-disable text-primary-300',
+             secondary: '!bg-secondary-300 hover:!bg-secondary-500 text-white',
             danger: '!bg-danger-500 hover:!bg-danger-700 ',
             outlet_primary:
                '!bg-transparent hover:!bg-primary hover:text-white text-primary border-1 border-primary',

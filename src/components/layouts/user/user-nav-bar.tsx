@@ -5,26 +5,28 @@ import { useState } from 'react';
 
 const NAV_LINKS = [
    { id: 'home', label: 'Home', hash: 'home' },
+   
+   //{ id: 'features', label: 'Features', hash: 'features' },
+   { id: 'Help', label: 'Help', hash: 'Help' },
    { id: 'about', label: 'About', hash: 'about' },
-   { id: 'features', label: 'Features', hash: 'features' },
-   { id: 'faq', label: 'FAQ', hash: 'faq' },
    { id: 'contact', label: 'Contact', hash: 'contact' }
 ] as const;
 
 export default function Navbar() {
    const [showMobileNav, setShowMobileNav] = useState(false);
    const linkClasses =
-      'text-xl text-dark-grey hover:text-gold hover:underline underline-offset-[20px] transition-colors';
+
+      'text-xl text-dark-grey hover:text-primary-500 hover:underline underline-offset-[20px] transition-colors';
    const mobileLinkClasses = `${linkClasses} py-3 px-4 rounded-lg`;
    
    return (
-    <header className="sticky top-0 z-50 w-full h-20 px-8 flex justify-between items-center 
-bg-white/70 backdrop-blur-lg max-w-7xl mx-auto border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 w-full h-20 px-5 flex justify-between items-center 
+bg-white/70 backdrop-blur-lg max-w-full mx-auto border-b border-gray-200 shadow-sm">
 
          <div className="flex items-center gap-3 font-extrabold text-2xl">
             <img src={logo}  alt="Salahaddin Logo" className="h-12 w-12" />
             <div>
-               <span className="text-gold">Salahaddin</span>{' '}
+               <span className="text-primary-500">Salahaddin</span>{' '}
                <span className="text-dark-grey">Internship</span>
             </div>
          </div>
@@ -36,7 +38,7 @@ bg-white/70 backdrop-blur-lg max-w-7xl mx-auto border-b border-gray-200 shadow-s
             ))}
          </nav>
          <button
-            className="sm:hidden text-dark-grey hover:text-gold  transition-colors p-2"
+            className="sm:hidden text-dark-grey hover:text-primary-500  transition-colors p-2"
             onClick={() => setShowMobileNav(!showMobileNav)}
             aria-label="Toggle navigation menu"
          >
